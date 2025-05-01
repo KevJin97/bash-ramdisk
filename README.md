@@ -12,41 +12,41 @@ Run the 'install.sh' script and follow the instructions.
 If you don't have any preferences of where to install the scripts, '~/.bin' can be used without adding it to your paths.
 
 # Options
-Markup : #### ramdisk enable [size] ####
+#### ramdisk enable [size] ####
 Creates a ramdisk of specified size
 
-Markup : #### ramdisk mkdir [dir_name] ####
+#### ramdisk mkdir [dir_name] ####
 Creates a symlink to a directory located in the ramdisk
 
-Markup : #### ramdisk status ####
+#### ramdisk status ####
 Returns status of ramdisk partition
     
-Markup : #### ramdisk resize [size] ####
+#### ramdisk resize [size] ####
 Expands or shrinks the ramdisk partition
 
-Markup : #### ramdisk disable ####
+#### ramdisk disable ####
 Unmounts ramdisk, removes all symlinks created using 'ramdisk mkdir' and frees data
 
-Markup : #### ramdisk help ####
+#### ramdisk help ####
 Returns options
 
 # Scripts
-Markup : #### ramdisk.sh ####
+#### ramdisk.sh
 This is the interface script that calls the other scripts.
 
-Markup : #### create-ramdisk ####
+#### create-ramdisk ####
 Mounts a ramdisk and allocates data to it using tmpfs. Then creates symlinks for ease of access
 
-Markup : #### checkstatus-ramdisk ####
+#### checkstatus-ramdisk ####
 Information about current ramdisks on system
 
-Markup : #### mkdir-ramdisk ####
+#### mkdir-ramdisk ####
 Creates a directory in the ramdisk and creates a symlink under the current directory. It also keeps track of the created symlinks and cleans up.
 WARNING - It can only create symlinks in the current directory. Use of relative '../' will not work.
 WARNING - The information for created symlinks are on the ramdisk itself. If the PC crashes before 'ramdisk disable' is called, it will be unable to clean up the dead links.
 
-Markup : #### resize-ramdisk ####
+#### resize-ramdisk ####
 Script uses built-in tmpfs to resize the ramdisk
 
-Markup : #### remove-ramdisk ####
+#### remove-ramdisk ####
 Tracks symlinks and deletes them all before unmounting the ramdisk
