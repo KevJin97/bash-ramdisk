@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [[ ! -d ~/.ramdisk ]]; then
+	./create-ramdisk 1G
+fi
+
+echo "$PWD/$1" >> /tmp/ramdisk/.symlinks	# make del easier
+dir=/tmp/ramdisk/"${EPOCHREALTIME/[^0-9]/}"
+mkdir $dir
+ln -sf $dir $PWD/$1
+ln -sf $PWD/$1 $dir/.$1
+ln -sf $PWD/ $dir/..$1

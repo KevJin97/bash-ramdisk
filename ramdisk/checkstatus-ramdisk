@@ -1,0 +1,11 @@
+#!/bin/bash
+if [[ ! -L ~/.ramdisk ]]; then
+	echo -e "ramdisk is currently \033[0;31mDISABLED\033[0m"
+
+else
+	echo -e "ramdisk is currently \033[0;32mENABLED\033[0m"
+	echo -e "\033[0;36m[\033[1;36mramdisk Properties\033[0;36m]\033[0m"
+	echo
+	df -h ~/.ramdisk
+	echo
+fi

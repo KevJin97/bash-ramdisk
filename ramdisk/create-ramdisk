@@ -1,0 +1,24 @@
+#!/bin/bash
+if [ -z "$1" ]; then
+	echo -e "\t\033[1;31mFAIL\033[0m : must specify how much RAM to allocate"
+else
+	sudo mkdir -p /tmp/ramdisk
+	if sudo mount -t tmpfs -o size="$1" tmpfs /tmp/ramdisk; then
+		ln -sf /tmp/ramdisk ~/.ramdisk
+		echo -e " \033[1;32mSUCCESS\033[0m: ramdisk is enabled"
+	else
+		sudo rm -rf /tmp/ramdisk
+		if [[ -L ~/.ramdisk ]]; then
+			rm ~/.ramdisk
+		fi
+	fi
+fi
+
+# Alternate Method:
+# 	sudo modprobe brd rd_nr=1 rd_size=$((1024*1024))
+# Preallocate
+# 	sudo dd if=/dev/zero of=/dev/ram0 bs=1GiB status=progress
+# Format to use
+# 	sudo mkfs.ext4 /dev/ram0
+# Finally mount
+# 	sudo mkfs.ext4 /dev/ram0 

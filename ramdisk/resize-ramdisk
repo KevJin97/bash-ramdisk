@@ -1,0 +1,6 @@
+#!/bin/bash
+if [[ ! -z $1 ]]; then
+	sudo mount -o remount,size=$1 /tmp/ramdisk
+else
+	echo -e " \033[1;31mFAILED\033[0m: must specify how much RAM to allocate"
+fi
