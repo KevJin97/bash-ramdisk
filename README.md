@@ -42,7 +42,6 @@ If you stored your '.bash_aliases' file anywhere other than the directory '~/' r
 
 #### mkdir-ramdisk ####
 * Creates a directory in the ramdisk and creates a symlink under the current directory. It also keeps track of the created symlinks and cleans up.
-* WARNING - It can only create symlinks in the current directory. Use of relative '../' will not work.
 * WARNING - The information for created symlinks are on the ramdisk itself. If the PC crashes before 'ramdisk disable' is called, it will be unable to clean up the dead links.
 
 #### resize-ramdisk ####
@@ -50,3 +49,6 @@ If you stored your '.bash_aliases' file anywhere other than the directory '~/' r
 
 #### remove-ramdisk ####
 * Tracks symlinks and deletes them all before unmounting the ramdisk
+
+#### rm-ramdisk ####
+* Checks if a symlink folder was created by this service. If so, it will remove all contents from RAM and delete all traces of the folder and symlink

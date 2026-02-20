@@ -7,5 +7,4 @@ else
 	echo -e "\033[0;36m[\033[1;36mramdisk Properties\033[0;36m]\033[0m"
 	echo
 	df -h ~/.ramdisk
-	echo
 fi

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Check if it's relative or absolute path
+if [[ "$1" == /* ]]; then
+	SYM_PATH=$1
+
+else
+	SYM_PATH=$PWD/$1
+fi
+
+# Check if it was created by this utility
+if grep -q "$SYM_PATH" ~/.ramdisk/.symlinks; then
+	RESOLVED_PATH=$(readlink -f $SYM_PATH)
+	rm -rf $RESOLVED_PATH
+	rm $SYM_PATH
+	grep -wv "$SYM_PATH" ~/.ramdisk/.symlinks > ~/.ramdisk/.symlinks.new
+	mv ~/.ramdisk/.symlinks.new ~/.ramdisk/.symlinks
+	
+else
+	echo "This was not created by this tool"
+fi
+

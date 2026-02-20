@@ -3,26 +3,25 @@ if [[ -L ~/.ramdisk ]]; then
 	rm ~/.ramdisk
 fi
 
-if [[ -f /tmp/ramdisk/.symlinks ]]; then
+if [[ -f /dev/shm/ramdisk/.symlinks ]]; then
 	echo
 	echo "Removing all symlink references to ramdisk parition..."
 	
-	for f in $(cat /tmp/ramdisk/.symlinks); do
+	for f in $(cat /dev/shm/ramdisk/.symlinks); do
 		if [[ -L $f ]]; then
 			rm $f
 		fi
 	done
 	
-	echo -e " \033[1;32mSUCCESS\033[0m: All symlinks have been removed"
+	echo -e "\033[1;32mSUCCESS\033[0m: All symlinks have been removed"
 fi
 
 echo "Unmounting ramdisk..."
-sudo umount /tmp/ramdisk && sudo rm -r /tmp/ramdisk
+sudo umount /dev/shm/ramdisk && sudo rm -r /dev/shm/ramdisk
 
-if [[ -d /tmp/ramdisk ]]; then
-	echo -e " \033[1;31mFAIL\033[0m: Unmounting ramdisk unsuccessful. Please ensure no processes are accessing the ramdisk"
+if [[ -d /dev/shm/ramdisk ]]; then
+	echo -e "\033[1;31mFAIL\033[0m: Unmounting ramdisk unsuccessful. Please ensure no processes are accessing the ramdisk"
 else
-	echo -e " \033[1;32mSUCCESS\033[0m: ramdisk was successfully unmounted"
-	echo -e " \033[1;36mCOMPLETE\033[0;36m: The RAM disk partition has successfully been disabled\033[0m"
+	echo -e "\033[1;32mSUCCESS\033[0m: ramdisk was successfully unmounted"
+	echo -e "\033[1;36mCOMPLETE\033[0;36m: The RAM disk partition has successfully been disabled\033[0m"
 fi
-echo

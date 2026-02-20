@@ -9,8 +9,13 @@ elif [[ "$1" == disable ]]; then
 
 elif [[ "$1" == mkdir ]]; then
 	~/.bin/ramdisk/mkdir-ramdisk $2
+
+elif [[ "$1" == rm ]]; then
+	~/.bin/ramdisk/rm-ramdisk $2
+
 elif [[ "$1" == resize ]]; then
 	~/.bin/ramdisk/resize-ramdisk $2
+
 elif [[ "$1" == help ]]; then
 	echo
 	echo -e "[\033[0;37moptions\033[0m] :"

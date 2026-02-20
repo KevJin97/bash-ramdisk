@@ -1,18 +1,21 @@
 #!/bin/bash
 if [ -z "$1" ]; then
-	echo -e "\t\033[1;31mFAIL\033[0m : must specify how much RAM to allocate"
+	MAX_SIZE='8G'
 else
-	sudo mkdir -p /tmp/ramdisk
-	if sudo mount -t tmpfs -o size="$1" tmpfs /tmp/ramdisk; then
-		ln -sf /tmp/ramdisk ~/.ramdisk
-		echo -e " \033[1;32mSUCCESS\033[0m: ramdisk is enabled"
-	else
-		sudo rm -rf /tmp/ramdisk
-		if [[ -L ~/.ramdisk ]]; then
-			rm ~/.ramdisk
-		fi
+	MAX_SIZE=$1
+fi
+
+sudo mkdir -p /dev/shm/ramdisk
+if sudo mount -t tmpfs -o size="$MAX_SIZE" tmpfs /dev/shm/ramdisk; then
+	ln -sf /dev/shm/ramdisk ~/.ramdisk
+	echo -e "\033[1;32mSUCCESS\033[0m: ramdisk is enabled"
+else
+	sudo rm -rf /dev/shm/ramdisk
+	if [[ -L ~/.ramdisk ]]; then
+		rm ~/.ramdisk
 	fi
 fi
+
 
 # Alternate Method:
 # 	sudo modprobe brd rd_nr=1 rd_size=$((1024*1024))
