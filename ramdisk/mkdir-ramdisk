@@ -17,4 +17,3 @@ dir=/dev/shm/ramdisk/"${EPOCHREALTIME/[^0-9]/}"
 mkdir $dir
 
 ln -sf $dir $SYM_PATH
-ln -sf $SYM_PATH/.. $dir/..$1
