@@ -11,7 +11,7 @@ fi
 # Check if it was created by this utility
 if grep -q "$SYM_PATH" ~/.ramdisk/.symlinks; then
 	RESOLVED_PATH=$(readlink -f $SYM_PATH)
-	rm -rf $RESOLVED_PATH
+	rm -rf "$RESOLVED_PATH"
 	rm $SYM_PATH
 	grep -wv "$SYM_PATH" ~/.ramdisk/.symlinks > ~/.ramdisk/.symlinks.new
 	mv ~/.ramdisk/.symlinks.new ~/.ramdisk/.symlinks

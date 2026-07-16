@@ -1,0 +1,1 @@
+alias ramdisk="~/.bin/ramdisk/ramdisk.sh"
