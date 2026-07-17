@@ -5,14 +5,14 @@ else
 	MAX_SIZE=$1
 fi
 
-sudo mkdir -p /dev/shm/ramdisk
+mkdir -p /dev/shm/ramdisk
 
 if sudo mount -t tmpfs -o size="$MAX_SIZE" tmpfs /dev/shm/ramdisk; then
 	ln -sf /dev/shm/ramdisk ~/.ramdisk
 	touch /dev/shm/ramdisk/.symlinks
 	echo -e "\033[1;32mSUCCESS\033[0m: ramdisk is enabled"
 else
-	sudo rm -rf /dev/shm/ramdisk
+	rm -rf /dev/shm/ramdisk
 	if [[ -L ~/.ramdisk ]]; then
 		rm ~/.ramdisk
 	fi

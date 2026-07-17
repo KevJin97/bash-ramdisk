@@ -5,7 +5,7 @@ elif [[ "$1" == enable ]]; then
 	~/.bin/ramdisk/create-ramdisk $2
 
 elif [[ "$1" == disable ]]; then
-	~/.bin/ramdisk/remove-ramdisk
+	~/.bin/ramdisk/disable-ramdisk
 
 elif [[ "$1" == mkdir ]]; then
 	~/.bin/ramdisk/mkdir-ramdisk $2

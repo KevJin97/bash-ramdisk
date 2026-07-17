@@ -17,7 +17,7 @@ if [[ -f /dev/shm/ramdisk/.symlinks ]]; then
 fi
 
 echo "Unmounting ramdisk..."
-sudo umount /dev/shm/ramdisk && sudo rm -r /dev/shm/ramdisk
+sudo umount /dev/shm/ramdisk && rm -r /dev/shm/ramdisk
 
 if [[ -d /dev/shm/ramdisk ]]; then
 	echo -e "\033[1;31mFAIL\033[0m: Unmounting ramdisk unsuccessful. Please ensure no processes are accessing the ramdisk"
