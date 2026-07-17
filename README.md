@@ -47,7 +47,7 @@ If you stored your '.bash_aliases' file anywhere other than the directory '~/' r
 #### resize-ramdisk ####
 * Script uses built-in tmpfs to resize the ramdisk
 
-#### remove-ramdisk ####
+#### disable-ramdisk ####
 * Tracks symlinks and deletes them all before unmounting the ramdisk
 
 #### rm-ramdisk ####
